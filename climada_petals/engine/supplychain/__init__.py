@@ -15,13 +15,14 @@ You should have received a copy of the GNU General Public License along
 with CLIMADA. If not, see <https://www.gnu.org/licenses/>.
 
 ---
-
-init hazard
 """
 
-from .tc_tracks_forecast import *
-from .tc_rainfield import *
-from .tc_surge_bathtub import *
-from .wildfire import *
-from .river_flood import *
-from .coastal_flood import *
+import logging
+#logging.getLogger("boario").setLevel(logging.DEBUG)
+
+LOGGER = logging.getLogger(__name__)
+
+from .core import DirectShocksSet, IndirectCostModel, StaticIOModel, BoARIOModel # noqa: E402 (ignore import order PEP8 rule because we have to define the logger before importing any other sub-modules)
+from .mriot_handling import get_mriot # noqa: E402
+
+__all__ = ["DirectShocksSet","IndirectCostModel", "StaticIOModel", "BoARIOModel", "get_mriot"]
